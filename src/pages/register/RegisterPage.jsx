@@ -1,17 +1,18 @@
 import "./RegisterPage.css";
+import AccountButton from "../../partials/buttons/AccountButton";
+import InputBox from "../../partials/inputs/InputBox";
 
 const RegisterPage = () => {
     return(
     
-    <div className="container">
-        <div className="window">
-            <div className="credentials">
-                <div className="label">Användarnamn</div>
-                <input type="text" className="cred" />
-                <div className="label">Lösenord</div>
-                <input type="text" className="cred" />
+    <div className="register-container">
+        <div className="register-window">
+            <div className="register-credentials">
+                <InputBox labelText="Användarnamn"/>
+                <InputBox labelText="Lösenord" />
+                <AccountButton text="Registrera"/>
             </div>
-            <button className="submit-btn">Submit</button>
+            
         </div>
     </div>
 

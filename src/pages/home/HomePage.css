@@ -1,0 +1,34 @@
+.home-container{
+  width: 100%;
+  height: 100vh;
+  padding-top: 80px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-window{
+  width: 600px;
+  height: 500px;
+  margin-bottom: 100px;
+  border: solid;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-items{
+  display: flex;
+  flex: row;
+}
+
+.home-item{
+  border: solid;
+  width: 110px;
+  height: 110px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
