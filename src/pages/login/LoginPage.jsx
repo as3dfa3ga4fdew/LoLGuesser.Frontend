@@ -4,10 +4,10 @@ import "./LoginPage.css";
 
 const LoginPage = () => {
     return(
-        <div className="container">
-            <div className="window">
+        <div className="login-container">
+            <div className="login-window">
 
-                <div className="credentials">
+                <div className="login-credentials">
                     <InputBox labelText="Användarnamn"/>
                     <InputBox labelText="Lösenord"/>
                 </div>
