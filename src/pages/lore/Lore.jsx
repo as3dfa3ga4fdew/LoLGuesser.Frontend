@@ -1,4 +1,5 @@
 import SubmitButton from '../../partials/buttons/SubmitButton';
+import ChampionNameInput from '../../partials/championNameInput/ChampionNameInput';
 import InputBox from '../../partials/inputs/InputBox';
 import './Lore.css';
 
@@ -14,7 +15,7 @@ const Lore = () => {
         <div className='lore-question'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore dolore provident voluptatem nobis, aliquid soluta temporibus molestiae necessitatibus accusantium voluptates.</div>
       </div>
       <div className='lore-answer'>
-        <InputBox />
+        <ChampionNameInput />
         <SubmitButton onClick={handleButtonClick}/>
       </div>
     </div>

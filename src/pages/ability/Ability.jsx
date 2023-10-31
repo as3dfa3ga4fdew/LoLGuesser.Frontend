@@ -1,5 +1,5 @@
 import SubmitButton from '../../partials/buttons/SubmitButton';
-import InputBox from '../../partials/inputs/InputBox';
+import ChampionNameInput from '../../partials/championNameInput/ChampionNameInput';
 import './Ability.css';
 
 const handleButtonClick = () => {
@@ -16,7 +16,7 @@ const Ability = ({image}) => {
         </div>
       </div>
       <div className='ability-answer'>
-        <InputBox />
+        <ChampionNameInput />
         <SubmitButton onClick={handleButtonClick}/>
       </div>
     </div>

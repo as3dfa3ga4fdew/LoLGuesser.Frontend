@@ -1,4 +1,5 @@
 import SubmitButton from '../../partials/buttons/SubmitButton';
+import ChampionNameInput from '../../partials/championNameInput/ChampionNameInput';
 import InputBox from '../../partials/inputs/InputBox';
 import './Splash.css'
 
@@ -16,7 +17,7 @@ const Splash = ({image}) => {
         </div>
       </div>
       <div className='splash-answer'>
-        <InputBox />
+        <ChampionNameInput />
         <SubmitButton onClick={handleButtonClick}/>
       </div>
     </div>

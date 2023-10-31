@@ -31,14 +31,6 @@
     justify-content: center;
 }
 
-.ability-button{
-    height: 40px;
-    width: 40px;
-    border-radius: 25px;
-    margin-top: 25px;
-    margin-left: 20px;
-}
-
 .ability-title{
     font-size: 18px;
     padding-top: 50px;

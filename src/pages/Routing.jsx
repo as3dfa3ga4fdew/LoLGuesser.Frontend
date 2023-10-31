@@ -5,6 +5,7 @@ import RegisterPage from "./register/RegisterPage";
 import Ability from "./ability/Ability";
 import Lore from "./lore/Lore";
 import Splash from "./splash/Splash";
+import {ChampionNamesProvider} from '../contexts/ChampionNamesContext';
 
 //Routes paths
 const Routing = () => {
