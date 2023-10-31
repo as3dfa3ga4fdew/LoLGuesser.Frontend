@@ -48,3 +48,7 @@
     font-size: large;
     font-family: 'Times New Roman', Times, serif;
 }
+
+.champion-name-highlight{
+    background: orange;
+}
