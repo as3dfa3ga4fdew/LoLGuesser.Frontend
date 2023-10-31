@@ -6,6 +6,7 @@
     justify-content: left;
     width: 200px;
     position: absolute;
+    margin-top: 40px;
 }
 
 .champion-list-container{
@@ -13,12 +14,12 @@
     flex-direction: column;
     align-items: left;
     justify-content: left;
-    width: 200px;
+    width: 190px;
+    padding-right: 25px;
 }
 
 .champion-name-input{
     width: 185px;
-    margin-top: -20px;
     height: 25px;
     font-size: larger;
     font-family: 'Times New Roman', Times, serif;
@@ -27,12 +28,23 @@
 .champion-list-item{
     text-align: left;
     padding-left: 0;
-    font-size: larger;
-    font-family: 'Times New Roman', Times, serif;
-    padding-top: 3px;
-    padding-bottom: 3px;
 }
 
 .champion-list-item:hover{
     background-color: lightgrey;
+}
+
+.champion-list-button{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    text-align: left;
+    padding: 0;
+    cursor: pointer;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: large;
+    font-family: 'Times New Roman', Times, serif;
 }

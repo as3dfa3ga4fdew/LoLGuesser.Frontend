@@ -15,24 +15,24 @@ const ChampionNameInput = () => {
             return;
         }
             
-        const filteredItems = championNames.filter(x => 
-            x.toLowerCase().startsWith(championNameInputRef.current.value.toLowerCase()));
-            
-            setChampionNameSuggestions(filteredItems);
+        const filteredItems = championNames.filter(x => x.toLowerCase().startsWith(championNameInputRef.current.value.toLowerCase()));
+        setChampionNameSuggestions(filteredItems);
     }
 
-    const fillChampionName = () => {
-        
+    const fillChampionName = (championName) => {
+        championNameInputRef.current.value = championName;
+        setChampionNameSuggestions([]);
     }
 
     return(
         <div className="champion-list-container">
         <input type="text" ref={championNameInputRef} onChange={inputOnChange} className="champion-name-input"/>
             <ul className="champion-list">
-            {championNameSuggestions.map((championName) => 
-                <ol className="champion-list-item">
-                    <button onClick={fillChampionName}>{championName}</button>
-                </ol>)}
+            {championNameSuggestions.map((championName) => (
+                <ol className="champion-list-item" key={championName}>
+                    <button className="champion-list-button" onClick={() => fillChampionName(championName)}>{championName}</button>
+                </ol>
+            ))}
             </ul>
         </div>
     )
