@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches previous snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="home-container"
+  >
+    <div
+      class="home-window"
+    >
+      <div
+        class="home-title"
+      >
+        Choose blyad
+      </div>
+      <div
+        class="home-items"
+      >
+        <a
+          class="home-item"
+          href="/ability"
+        >
+          <img
+            alt="ability"
+            src="ability.png"
+          />
+        </a>
+        <a
+          class="home-item"
+          href="/lore"
+        >
+          <img
+            alt="lore"
+            src="lore.png"
+          />
+        </a>
+        <a
+          class="home-item"
+          href="/splash"
+        >
+          <img
+            alt="splash"
+            src="splash.png"
+          />
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

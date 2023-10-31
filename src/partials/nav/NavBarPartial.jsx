@@ -3,8 +3,10 @@ import { NavLink } from "react-router-dom";
 
 const NavBarPartial = () =>{
     return(
-        <nav>
-            <NavLink to="/">LoL Guesser</NavLink>
+        <nav className="nav-header">
+            <NavLink className="header-item" to="/" >LoL Guesser</NavLink>
+            <NavLink className="header-item" to="/login" >Login</NavLink>
+            <NavLink className="header-item" to="/register" >Register</NavLink>
         </nav>
     );
 }
