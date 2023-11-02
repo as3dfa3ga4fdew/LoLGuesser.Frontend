@@ -1,39 +1,43 @@
 import React from "react";
-import { render, fireEvent, screen } from '@testing-library/react';
-import Ability from "./Ability";
-import InputBox from "../../partials/inputs/InputBox";
+import { render, waitFor, act } from '@testing-library/react';
+import Ability from "./Ability.jsx";
 
-
-test('Ability component displays image', () => {
-    render(<Ability image="test.jpg" />);
-
-    const abilityImage = screen.getByAltText('testbild');
-
-    expect(abilityImage).toBeInTheDocument();
-});
-
-test('Ability component uses the correct CSS classes', () => {
-    render(<Ability image="test.jpg"/>);
-
-    const abilityContainer = screen.getByText('Which Champion has this Ability?').closest('.ability-container');
-    const abilityWindow = screen.getByText('Which Champion has this Ability?').closest('.ability-window');
-
-    expect(abilityContainer).toHaveClass('ability-container');
-    expect(abilityWindow).toHaveClass('ability-window');
-});
-
-test('Ability component displays the title', () => {
-    render(<Ability image="test.jpg" />);
-
-    const title = screen.getByText('Which Champion has this Ability?');
-    
-    expect(title).toBeInTheDocument();
-});
-
-test('InputBox component renders with label and input', () => {
-    render(<InputBox labelText="Användarnamn" />);
+describe('Ability Component', () => {
+    it('renders without errors', () => {
+      render(<Ability />);
+    });
   
-    const inputLabel = screen.getByText('Användarnamn');
+    it('loads data and updates state correctly', async () => {
+      const mockedQuestion = {
+        id: 1,
+        type: 'example',
+        value: 'example.jpg',
+      };
   
-    expect(inputLabel).toBeInTheDocument();
-});
+      // Mock the fetch function to return the expected result
+      global.fetch = jest.fn().mockResolvedValue({
+        ok: true,
+        json: async () => mockedQuestion,
+      });
+  
+      const { getByText, getByAltText } = render(<Ability />);
+      
+      // Ensure the loading message or initial state is present
+      expect(getByText('Which Champion has this Ability?')).toBeInTheDocument();
+  
+      // Wait for the async operation to complete
+      await act(async () => {
+        await waitFor(() => {
+          expect(getByAltText('testbild')).toBeInTheDocument();
+          expect(global.fetch).toHaveBeenCalledWith('https://localhost:5000/api/Game/question', {
+            method: 'post',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ type: 1 }),
+          });
+        });
+      });
+    });
+  });

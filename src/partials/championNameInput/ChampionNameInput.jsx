@@ -2,7 +2,7 @@ import { ChampionNamesContext } from "../../contexts/ChampionNamesContext";
 import { useContext, useRef, useState } from "react";
 import './ChampionNameInput.css';
 
-const ChampionNameInput = () => {
+const ChampionNameInput = ({id, type}) => {
 
     const {championNamesUpdate, championNames} = useContext(ChampionNamesContext);
     const [championNameSuggestions, setChampionNameSuggestions] = useState([]);
@@ -20,7 +20,7 @@ const ChampionNameInput = () => {
             .map((championName) => {
                 return {"championName": championName, "isSelected": false};
             });
-        
+
         if(filteredItems.length >= 1){
             setSuggestionIndex(0);
             console.log(suggestionIndex);
@@ -33,13 +33,8 @@ const ChampionNameInput = () => {
         setChampionNameSuggestions(filteredItems);
     }
 
-    const fillChampionName = (championName) => {
-        championNameInputRef.current.value = championName;
-        setChampionNameSuggestions([]);
-    }
-
     const onKeyPress = (e) => {
-        
+    
         if(e.key !== "ArrowUp" && e.key !== "ArrowDown" && e.key !== 'Enter')
             return;
         if(championNameSuggestions.length === 0)
@@ -51,19 +46,33 @@ const ChampionNameInput = () => {
             return;
         
         if(e.key === "ArrowUp"){
-            setSuggestionIndex(suggestionIndex - 1);
             championNameSuggestions[suggestionIndex].isSelected = false;
             championNameSuggestions[suggestionIndex - 1].isSelected = true;
+
+            const element = document.getElementById(championNameSuggestions[suggestionIndex - 1].championName);
+            element.scrollIntoView();
+            setSuggestionIndex(suggestionIndex - 1);
         }
         if(e.key === "ArrowDown"){
-            setSuggestionIndex(suggestionIndex + 1);
             championNameSuggestions[suggestionIndex].isSelected = false;
             championNameSuggestions[suggestionIndex + 1].isSelected = true;
+
+            const element = document.getElementById(championNameSuggestions[suggestionIndex + 1].championName);
+            element.scrollIntoView();
+            setSuggestionIndex(suggestionIndex + 1);
         }
 
+        if(e.key === "Enter"){
+            const selectedChampionName = championNameSuggestions[suggestionIndex].championName;
+            setChampionNameSuggestions([]);
+            setSuggestionIndex(-1);
+            championNameInputRef.current.value = selectedChampionName;
+            
+            //Send answer to API
+            //id, type, answer
+            return;
+        }
         setChampionNameSuggestions(JSON.parse(JSON.stringify(championNameSuggestions)));
-
-        console.log(e.key);
     }
 
     return(
@@ -71,12 +80,7 @@ const ChampionNameInput = () => {
             <input type="text" ref={championNameInputRef} onChange={inputOnChange} className="champion-name-input"/>
             <ul className="champion-list">
                 {championNameSuggestions.map((championName) => {
-
-                    if(championName.isSelected)
-                        return <ol className="champion-list-item champion-name-highlight" key={championName.championName}>{championName.championName}</ol>;
-                    else
-                        return <ol className="champion-list-item" key={championName.championName}>{championName.championName}</ol>;
-
+                    return <ol id={championName.championName} className={championName.isSelected ? "champion-list-item champion-name-highlight" : "champion-list-item"} key={championName.championName}>{championName.championName}</ol>;
                 })}
             </ul>
         </div>

@@ -1,26 +1,61 @@
-import SubmitButton from '../../partials/buttons/SubmitButton';
+import { useEffect, useState } from 'react';
 import ChampionNameInput from '../../partials/championNameInput/ChampionNameInput';
 import './Ability.css';
 
-const handleButtonClick = () => {
-  alert("button clicked!")
-}
 
-const Ability = ({image}) => {
+const Ability = () => {
+
+  const [question, setQuestion] = useState({});
+
+  useEffect(() => {
+    SetQuestionAsync(setQuestion);
+  }, []);
+
   return(
     <div className='ability-container'>
       <div className='ability-window'>
         <p className='ability-title'>Which Champion has this Ability?</p>
         <div className='ability-img-container'>
-          <img className='ability-img' src={image} alt="testbild" />
+          <img className='ability-img' src={question.value} alt="testbild" />
         </div>
       </div>
       <div className='ability-answer'>
-        <ChampionNameInput />
-        <SubmitButton onClick={handleButtonClick}/>
+        <ChampionNameInput id={question.id} type={question.type} />
       </div>
     </div>
   );
 }
 
-export default Ability
+const SetQuestionAsync = async (setQuestion) => {
+  try 
+  {
+    let body = {
+      "type": 1
+    };
+
+    let response = await fetch("https://localhost:5000/api/Game/question", {
+      method: "post",
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+
+    if(response.ok !== true)
+    {
+      //setErrorMessage("Ooops something went wrong please try again later... 1");
+      return;
+    }
+    let result = await response.json();
+    console.log(result);
+    setQuestion(JSON.parse(JSON.stringify(result)));
+  }
+  catch(error)
+  {
+    console.log(error);
+    //setErrorMessage("Ooops something went wrong please try again later... 1");
+  }
+}
+
+export default Ability;

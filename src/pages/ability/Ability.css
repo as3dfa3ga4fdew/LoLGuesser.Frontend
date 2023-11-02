@@ -9,8 +9,8 @@
 }
 
 .ability-window{
-    width: 400px;
-    height: 350px;
+    width: 500px;
+    height: 400px;
     border: solid;
     border-radius: 10px;
     display: flex;
@@ -19,20 +19,25 @@
 }
 
 .ability-img-container{
-    border: solid;
-    width: 100px;
-    height: 100px;
+    border: 2px solid;
+    border-radius: 10px;
+    width: 150px;
+    height: 150px;
 }
 
 .ability-answer{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 8px;
 }
 
 .ability-title{
     font-size: 18px;
     padding-top: 50px;
     padding-bottom: 20px;
+}
+
+.ability-img{
+    width: 100%;
+    border-radius: 7px;
 }

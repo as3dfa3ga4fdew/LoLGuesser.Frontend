@@ -6,18 +6,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(to right, rgb(0, 90, 130), rgb(9, 20, 40));
 }
 
 .home-window{
   width: 600px;
   height: 500px;
   margin-bottom: 100px;
-  border: solid;
-  border-radius: 10px;
+  border: solid 3px rgb(200, 170, 110);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(to right, rgb(200, 155, 60), rgb(120, 90, 40));
 }
 
 .home-items{
@@ -26,14 +27,23 @@
 }
 
 .home-item{
-  border: solid;
-  width: 110px;
-  height: 110px;
+  border: solid rgb(70, 55, 20) 3px;
+  width: 130px;
+  height: 130px;
   margin-left: 20px;
   margin-right: 20px;
   display: flex;
   justify-content: center;
   overflow: hidden;
-  border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 50%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgb(70, 55, 20);
+}
+
+.lore-image{
+  height: 110px;
+  width: 110px;
 }
