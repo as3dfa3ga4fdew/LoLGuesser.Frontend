@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import ChampionNameInput from '../../partials/championNameInput/ChampionNameInput';
-import './Splash.css'
+import './Splash.css';
+import '../../globals/Global.css';
 
 
 const Splash = () => {

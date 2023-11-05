@@ -1,6 +1,7 @@
 import { ChampionNamesContext } from "../../contexts/ChampionNamesContext";
 import { useContext, useRef, useState } from "react";
 import './ChampionNameInput.css';
+import '../../globals/Global.css';
 
 const ChampionNameInput = ({id, type}) => {
 

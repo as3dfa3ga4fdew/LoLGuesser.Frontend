@@ -23,7 +23,7 @@
     height: 25px;
     font-size: larger;
     font-family: 'Times New Roman', Times, serif;
-    border: 2px solid;
+    border: 2px solid var(--window-border-color);
     border-radius: 5px;
 }
 

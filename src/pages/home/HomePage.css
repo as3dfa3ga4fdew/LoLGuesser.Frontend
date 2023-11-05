@@ -6,19 +6,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to right, rgb(0, 90, 130), rgb(9, 20, 40));
+  background: var(--container-color);
 }
 
 .home-window{
   width: 600px;
   height: 500px;
   margin-bottom: 100px;
-  border: solid 3px rgb(200, 170, 110);
+  border: solid 3px var(--window-border-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to right, rgb(200, 155, 60), rgb(120, 90, 40));
+  background: var(--window-color);
 }
 
 .home-items{
@@ -27,23 +27,36 @@
 }
 
 .home-item{
-  border: solid rgb(70, 55, 20) 3px;
+  border: solid rgb(200, 155, 60) 5px;
   width: 130px;
   height: 130px;
   margin-left: 20px;
   margin-right: 20px;
   display: flex;
-  justify-content: center;
   overflow: hidden;
   border-radius: 50%;
-  background-color: white;
+  background-color: rgb(200, 170, 110);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 20px rgb(70, 55, 20);
+  box-shadow: 0 0 20px rgb(200, 155, 60);
 }
 
 .lore-image{
   height: 110px;
   width: 110px;
+}
+
+.home-titles{
+  display: flex;
+  flex: row;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.home-title{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 }

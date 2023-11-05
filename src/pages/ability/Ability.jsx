@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import ChampionNameInput from '../../partials/championNameInput/ChampionNameInput';
 import './Ability.css';
+import '../../globals/Global.css';
 
 
 const Ability = () => {
@@ -14,7 +15,7 @@ const Ability = () => {
   return(
     <div className='ability-container'>
       <div className='ability-window'>
-        <p className='ability-title'>Which Champion has this Ability?</p>
+        <div className='ability-title'>Which Champion has this Ability?</div>
         <div className='ability-img-container'>
           <img className='ability-img' src={question.value} alt="testbild" />
         </div>
