@@ -3,7 +3,7 @@ import { useContext, useRef, useState } from "react";
 import './ChampionNameInput.css';
 import '../../globals/Global.css';
 
-const ChampionNameInput = ({id, type}) => {
+const ChampionNameInput = ({id, type, setNext, next}) => {
 
     const {championNamesUpdate, championNames} = useContext(ChampionNamesContext);
     const [championNameSuggestions, setChampionNameSuggestions] = useState([]);
@@ -24,8 +24,6 @@ const ChampionNameInput = ({id, type}) => {
 
         if(filteredItems.length >= 1){
             setSuggestionIndex(0);
-            console.log(suggestionIndex);
-            console.log(filteredItems[0]);
             filteredItems[0].isSelected = true;
         }
         else
@@ -71,6 +69,27 @@ const ChampionNameInput = ({id, type}) => {
             
             //Send answer to API
             //id, type, answer
+            let body = {
+                "id" : id,
+                "type" : type,
+                "answer" : selectedChampionName
+            }
+
+            let result = validateAnswer(body);
+
+            if(result.correct === false){
+                //seterrormessage FEL
+                console.log("fel", result);
+                return;
+            }
+            else if(result.correct === true){
+                console.log("rätt", result);
+            }
+            //If userContext has jwt token, update userContext with new score
+
+            
+            setNext(!next);
+
             return;
         }
         setChampionNameSuggestions(JSON.parse(JSON.stringify(championNameSuggestions)));
@@ -86,6 +105,18 @@ const ChampionNameInput = ({id, type}) => {
             </ul>
         </div>
     )
+}
+
+const validateAnswer = async (body) => {
+    let response = await fetch("https://localhost:5000/api/Game/answer/guest", {
+      method: "post",
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+    return response.json();
 }
 
 export default ChampionNameInput;

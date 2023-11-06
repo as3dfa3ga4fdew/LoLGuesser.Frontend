@@ -7,10 +7,11 @@ import '../../globals/Global.css';
 const Ability = () => {
 
   const [question, setQuestion] = useState({});
+  const [next, setNext] = useState(false);
 
   useEffect(() => {
     SetQuestionAsync(setQuestion);
-  }, []);
+  }, [next]);
 
   return(
     <div className='ability-container'>
@@ -21,7 +22,7 @@ const Ability = () => {
         </div>
       </div>
       <div className='ability-answer'>
-        <ChampionNameInput id={question.id} type={question.type} />
+        <ChampionNameInput id={question.id} type={question.type} setNext={setNext} next={next} />
       </div>
     </div>
   );

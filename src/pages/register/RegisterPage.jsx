@@ -6,6 +6,7 @@ import { IsValidUsername, isValidPassword } from "../../helpers/ValidateInput";
 import { UserContext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import config from "../../config.json";
 
 const RegisterPage = () => {
 
@@ -38,7 +39,7 @@ const RegisterPage = () => {
             let response;
             let result;
 
-            response = await fetch(/*"https://localhost/api-endpoint"*/"", {
+            response = await fetch(config.serverUrl + "/api/auth/register", {
                 method: "post",
                 headers: {
                     'Accept' : 'application/json',
@@ -66,7 +67,7 @@ const RegisterPage = () => {
             let userBuilder = {
                 jwt: result.jwt,
                 username: decoded.username,
-                type : decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"],
+                score: result.score,
                 rememberMe: rememberMe
             };
 

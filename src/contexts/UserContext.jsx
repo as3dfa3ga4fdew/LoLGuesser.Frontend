@@ -1,12 +1,12 @@
 import { createContext, useContext, useState, useEffect } from "react"
-
+import config from "../config.json";
 
 const UserContext = createContext();
 
 const UserProvider = (props) => {
 
   const keyName = "user";
-  const userBuilder = {jwt: "", username: "", type: 0, rememberMe: false};
+  const userBuilder = {jwt: "", username: "", score: 0, rememberMe: false};
 
   const userUpdate = (val) => {
     setUser(val);
@@ -57,7 +57,7 @@ const UserProvider = (props) => {
 
 const SetValidatedUserAsync = async (jwt, setUser, value, userBuilder) => {
   try{
-    let response = await fetch(/*"https://localhost/5000/api-endpoint när den är klar"*/"", {
+    let response = await fetch(config.serverUrl + "/api/auth/token", {
       headers: {
         Authorization: "Bearer " + jwt
       }
