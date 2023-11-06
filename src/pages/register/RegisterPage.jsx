@@ -9,7 +9,6 @@ import { jwtDecode } from "jwt-decode";
 import config from "../../config.json";
 
 const RegisterPage = () => {
-
     const navigation = useNavigate();
     const {userUpdate, user} = useContext(UserContext);
     const [errorMessage, setErrorMessage] = useState(null);
@@ -53,7 +52,6 @@ const RegisterPage = () => {
                     setErrorMessage("Username already exists");
                     return;
                 }
-
                 return;
             }
 
@@ -72,7 +70,7 @@ const RegisterPage = () => {
             };
 
             userUpdate(userBuilder);
-
+            console.log(userBuilder);
             navigation("/");
         }
         catch(error){
@@ -87,14 +85,15 @@ const RegisterPage = () => {
     <div className="register-container">
         <div className="register-window">
             <div className="register-credentials">
-                <InputBox labelText="Användarnamn" ref={usernameRef} />
-                <InputBox labelText="Lösenord" ref={passwordRef} />
+                <input type="text" ref={usernameRef}/>
+                <input type="text" ref={passwordRef}/>
                 <p>Remember Me</p>
                 <input type="checkbox" onChange={rememberMeHandler} checked={rememberMe}/>
                 <div className="error-container">
                     <p>{errorMessage == null ? "" : errorMessage}</p>
                 </div>
-                <AccountButton text="Registrera" onClick={() => register()}/>
+                <button onClick={register}></button>
+                <AccountButton text="Register" onClick={() => register()}/>
             </div>
             
         </div>

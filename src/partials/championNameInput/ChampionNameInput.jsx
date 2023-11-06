@@ -1,10 +1,13 @@
 import { ChampionNamesContext } from "../../contexts/ChampionNamesContext";
+import {UserContext} from "../../contexts/UserContext";
 import { useContext, useRef, useState } from "react";
 import './ChampionNameInput.css';
 import '../../globals/Global.css';
+import config from "../../config.json";
 
 const ChampionNameInput = ({id, type, setNext, next}) => {
-
+    const {userUpdate, user} = useContext(UserContext);
+    const [message, setMessage] = useState(null);
     const {championNamesUpdate, championNames} = useContext(ChampionNamesContext);
     const [championNameSuggestions, setChampionNameSuggestions] = useState([]);
     const [suggestionIndex, setSuggestionIndex] = useState(-1);
@@ -32,7 +35,7 @@ const ChampionNameInput = ({id, type, setNext, next}) => {
         setChampionNameSuggestions(filteredItems);
     }
 
-    const onKeyPress = (e) => {
+    const onKeyPress = async (e) => {
     
         if(e.key !== "ArrowUp" && e.key !== "ArrowDown" && e.key !== 'Enter')
             return;
@@ -65,33 +68,35 @@ const ChampionNameInput = ({id, type, setNext, next}) => {
             const selectedChampionName = championNameSuggestions[suggestionIndex].championName;
             setChampionNameSuggestions([]);
             setSuggestionIndex(-1);
-            championNameInputRef.current.value = selectedChampionName;
-            
-            //Send answer to API
-            //id, type, answer
+            championNameInputRef.current.value = "";
+
             let body = {
                 "id" : id,
                 "type" : type,
                 "answer" : selectedChampionName
             }
 
-            let result = validateAnswer(body);
-
-            if(result.correct === false){
-                //seterrormessage FEL
-                console.log("fel", result);
+            let result = await validateAnswer2(user.jwt, body, setMessage);
+            
+            if(result.correct !== true)
+            {
+                setMessage("Invalid answer hahahhaha");
                 return;
             }
-            else if(result.correct === true){
-                console.log("rätt", result);
-            }
-            //If userContext has jwt token, update userContext with new score
-
             
+            if(user.jwt !== "")
+            {
+                console.log(result);
+                user.score = result.score;
+                userUpdate(JSON.parse(JSON.stringify(user)));
+            }
+            
+            setMessage(null);
             setNext(!next);
 
             return;
         }
+
         setChampionNameSuggestions(JSON.parse(JSON.stringify(championNameSuggestions)));
     }
 
@@ -103,20 +108,66 @@ const ChampionNameInput = ({id, type, setNext, next}) => {
                     return <ol id={championName.championName} className={championName.isSelected ? "champion-list-item champion-name-highlight" : "champion-list-item"} key={championName.championName}>{championName.championName}</ol>;
                 })}
             </ul>
+            {message == null ? <></> : <p className="redbox">{message}</p>}
         </div>
     )
 }
 
-const validateAnswer = async (body) => {
-    let response = await fetch("https://localhost:5000/api/Game/answer/guest", {
-      method: "post",
-      headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    });
-    return response.json();
+const validateAnswer2 = async (jwt, body, setMessage) => {
+    try
+    {
+        //Update to /api/game/answer later will work the same
+        let response = await fetch(config.serverUrl + "/api/Game/answer/guest", {
+            method: "post",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                 Authorization: "Bearer " + jwt
+            },
+            body: JSON.stringify(body)
+        });
+
+        if(response.ok !== true)
+        {
+            setMessage("Ooops something went wrong please try again later...");
+            return;
+        }
+
+        return response.json().then((responseJson)=>{return responseJson});
+    }
+    catch(e)
+    {
+        setMessage("Ooops something went wrong please try again later...");
+        return;
+    }
+}
+
+const validateAnswer = async (body, setMessage) => {
+    try
+    {
+        //Update to /api/game/answer later will work the same
+        let response = await fetch(config.serverUrl + "/api/Game/answer/guest", {
+            method: "post",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        });
+
+        if(response.ok !== true)
+        {
+            setMessage("Ooops something went wrong please try again later...");
+            return;
+        }
+
+        return response.json().then((responseJson)=>{return responseJson});
+    }
+    catch(e)
+    {
+        setMessage("Ooops something went wrong please try again later...");
+        return;
+    }
 }
 
 export default ChampionNameInput;

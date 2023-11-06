@@ -9,10 +9,10 @@ function App() {
   return (
     <>
     <UserProvider>
-    <ChampionNamesProvider>
-      <NavBarPartial/>
-      <Routing />
-    </ChampionNamesProvider>
+      <ChampionNamesProvider>
+        <NavBarPartial/>
+        <Routing />
+      </ChampionNamesProvider>
     </UserProvider>
     </>
   );

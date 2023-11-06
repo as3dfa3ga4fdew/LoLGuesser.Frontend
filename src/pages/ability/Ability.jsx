@@ -50,7 +50,7 @@ const SetQuestionAsync = async (setQuestion) => {
       return;
     }
     let result = await response.json();
-    console.log(result);
+
     setQuestion(JSON.parse(JSON.stringify(result)));
   }
   catch(error)
