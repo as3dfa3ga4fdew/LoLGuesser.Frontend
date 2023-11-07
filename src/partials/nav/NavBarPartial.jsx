@@ -14,7 +14,7 @@ const NavBarPartial = () =>{
     return(
         <nav className="nav-header">
             <NavLink to="/" >
-                <img src={Logo} alt="" className="header-logo"/>
+                <img src={Logo} alt="company logo" className="header-logo"/>
             </NavLink>
             {
                 user == null || user.jwt == "" ? 
