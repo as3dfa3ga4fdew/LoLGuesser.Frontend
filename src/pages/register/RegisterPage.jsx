@@ -1,4 +1,5 @@
 import "./RegisterPage.css";
+import "../../globals/Global.css";
 import AccountButton from "../../partials/buttons/AccountButton";
 import InputBox from "../../partials/inputs/InputBox";
 import { useRef, useState, useContext } from "react";
@@ -85,15 +86,23 @@ const RegisterPage = () => {
     <div className="register-container">
         <div className="register-window">
             <div className="register-credentials">
-                <input type="text" ref={usernameRef}/>
-                <input type="text" ref={passwordRef}/>
-                <p>Remember Me</p>
-                <input type="checkbox" onChange={rememberMeHandler} checked={rememberMe}/>
+
+                <div className="register-input-container">
+                    <label className="register-input-label">Username</label>
+                    <input className='register-input' type="text" ref={usernameRef} />
+                </div>
+                <div className="register-input-container">
+                    <label className="register-input-label">Password</label>
+                    <input className='register-input' type="password" ref={passwordRef} />
+                </div>
+
+                <div className="register-rememberme">Remember Me
+                    <input type="checkbox" className="register-rememberme-text" onChange={rememberMeHandler} checked={rememberMe} />
+                </div>
                 <div className="error-container">
                     <p>{errorMessage == null ? "" : errorMessage}</p>
                 </div>
-                <button onClick={register}></button>
-                <AccountButton text="Register" onClick={() => register()}/>
+                <button className="register-button" onClick={register}>Register</button>
             </div>
             
         </div>

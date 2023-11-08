@@ -6,10 +6,11 @@ import '../../globals/Global.css';
 const Lore = () => {
 
   const [question, setQuestion] = useState({});
+  const [next, setNext] = useState(false);
   
   useEffect(() => {
     SetQuestionAsync(setQuestion);
-  }, [])
+  }, [next])
 
   return(
     <div className='lore-container'>
@@ -18,7 +19,7 @@ const Lore = () => {
         <div className='lore-question'>"{question.value}"</div>
       </div>
       <div className='lore-answer'>
-        <ChampionNameInput />
+        <ChampionNameInput id={question.id} type={question.type} setNext={setNext} next={next} />
       </div>
     </div>
   );

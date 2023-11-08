@@ -23,10 +23,10 @@ const NavBarPartial = () =>{
                     <NavLink className="header-item" id="header-item-right" to="/register" >Register</NavLink>
                 </div>
                 :
-                <div>
-                    <button onClick={logout}>Logout</button>
-                    <p>{user.username}</p>
-                    <p>{user.score}</p>
+                <div className="header-account-items">
+                    <button className="logout-button" onClick={logout}>Logout</button>
+                    <div className="user-info">{user.username}:</div>
+                    <div className="user-info">{user.score}</div>
                 </div>
             }
           
