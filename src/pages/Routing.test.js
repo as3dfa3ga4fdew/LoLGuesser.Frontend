@@ -136,5 +136,5 @@ describe('Routing', () => {
       </BrowserRouter>
     );
     expect(screen.queryByText('SplashMock')).not.toBeInTheDocument();
-  });
+  }); 
 });
