@@ -1,28 +1,22 @@
 .ability-container{
     width: 100%;
     height: 100vh;
-    padding-top: 80px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background: var(--container-color);
 }
 
 .ability-window{
-    width: 400px;
+    width: 600px;
     height: 350px;
-    border: solid;
-    border-radius: 10px;
+    border: solid 3px var(--window-border-color);
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.ability-img-container{
-    border: solid;
-    width: 100px;
-    height: 100px;
+    background: var(--window-color);
 }
 
 .ability-answer{
@@ -33,6 +27,19 @@
 
 .ability-title{
     font-size: 18px;
+    color: var(--gold-title-color);
     padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+.ability-img-container{
+    border: 2px solid var(--window-border-color);
+    width: 150px;
+    height: 150px;
+    margin-top: 30px;
+}
+
+.ability-img{
+    width: 100%;
+    border-radius: 7px;
 }

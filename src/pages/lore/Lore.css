@@ -1,22 +1,22 @@
 .lore-container{
     width: 100%;
     height: 100vh;
-    padding-top: 80px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background: var(--container-color);
 }
 
 .lore-window{
-    width: 400px;
+    width: 600px;
     height: 350px;
-    border: solid;
-    border-radius: 10px;
+    border: solid 3px var(--window-border-color);
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: var(--window-color);
 }
 
 .lore-answer{
@@ -29,11 +29,13 @@
     font-size: 18px;
     padding-top: 50px;
     padding-bottom: 20px;
+    color: var(--gold-title-color);
 }
 
 .lore-question{
-    margin-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
     text-align: center;
+    color: rgb(240, 230, 210);
+    /*color: var(--gold-text-color);*/
 }

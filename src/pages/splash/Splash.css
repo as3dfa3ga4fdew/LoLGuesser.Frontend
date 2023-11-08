@@ -1,22 +1,22 @@
 .splash-container{
     width: 100%;
     height: 100vh;
-    padding-top: 80px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background: var(--container-color);
 }
 
 .splash-window{
-    width: 400px;
+    width: 600px;
     height: 350px;
-    border: solid;
-    border-radius: 10px;
+    border: solid 3px var(--window-border-color);
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: var(--window-color);
 }
 
 .splash-answer{
@@ -27,12 +27,19 @@
 
 .splash-title{
     font-size: 18px;
-    padding-top: 50px;
-    padding-bottom: 20px;
+    color: var(--gold-title-color);
 }
 
 .splash-img-container{
-    border: solid;
-    width: 170px;
-    height: 170px;
+    border: solid 2px;
+    width: 250px;
+    height: 250px;
+    border: solid 2px var(--window-border-color);
+}
+
+.splash-img{
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 1215px 717px;
 }
