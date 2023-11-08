@@ -1,11 +1,9 @@
 import "./RegisterPage.css";
-import AccountButton from "../../partials/buttons/AccountButton";
-import InputBox from "../../partials/inputs/InputBox";
+import "../../globals/Global.css";
 import { useRef, useState, useContext } from "react";
 import { IsValidUsername, isValidPassword } from "../../helpers/ValidateInput";
 import { UserContext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
 import config from "../../config.json";
 
 const RegisterPage = () => {
@@ -59,12 +57,9 @@ const RegisterPage = () => {
 
             setErrorMessage("success");
 
-            const token = result.jwt;
-            const decoded = jwtDecode(token);
-
             let userBuilder = {
                 jwt: result.jwt,
-                username: decoded.username,
+                username: result.username,
                 score: result.score,
                 rememberMe: rememberMe
             };
@@ -85,15 +80,23 @@ const RegisterPage = () => {
     <div className="register-container">
         <div className="register-window">
             <div className="register-credentials">
-                <input type="text" ref={usernameRef}/>
-                <input type="text" ref={passwordRef}/>
-                <p>Remember Me</p>
-                <input type="checkbox" onChange={rememberMeHandler} checked={rememberMe}/>
+
+                <div className="register-input-container">
+                    <label className="register-input-label">Username</label>
+                    <input className='register-input' type="text" ref={usernameRef} />
+                </div>
+                <div className="register-input-container">
+                    <label className="register-input-label">Password</label>
+                    <input className='register-input' type="password" ref={passwordRef} />
+                </div>
+
+                <div className="register-rememberme">Remember Me
+                    <input type="checkbox" className="register-rememberme-text" onChange={rememberMeHandler} checked={rememberMe} />
+                </div>
                 <div className="error-container">
                     <p>{errorMessage == null ? "" : errorMessage}</p>
                 </div>
-                <button onClick={register}></button>
-                <AccountButton text="Register" onClick={() => register()}/>
+                <button className="register-button" onClick={register}>Register</button>
             </div>
             
         </div>

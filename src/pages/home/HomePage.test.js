@@ -20,7 +20,7 @@ it('Matches previous snapshot', () => {
     expect(asFragment()).toMatchSnapshot();
 });
 
-it('contains a title', () => {
+it('contains ability option', () => {
     const {getByText} = render(
         <MemoryRouter>
             <HomePage />

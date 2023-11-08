@@ -11,6 +11,7 @@ const ChampionNameInput = ({id, type, setNext, next}) => {
     const {championNamesUpdate, championNames} = useContext(ChampionNamesContext);
     const [championNameSuggestions, setChampionNameSuggestions] = useState([]);
     const [suggestionIndex, setSuggestionIndex] = useState(-1);
+    const [incorrectInputs, setIncorrectInputs] = useState([]);
     let championNameInputRef = useRef();
 
     const inputOnChange = () => {
@@ -68,7 +69,6 @@ const ChampionNameInput = ({id, type, setNext, next}) => {
             const selectedChampionName = championNameSuggestions[suggestionIndex].championName;
             setChampionNameSuggestions([]);
             setSuggestionIndex(-1);
-            championNameInputRef.current.value = "";
 
             let body = {
                 "id" : id,
@@ -80,8 +80,15 @@ const ChampionNameInput = ({id, type, setNext, next}) => {
             
             if(result.correct !== true)
             {
-                setMessage("Invalid answer hahahhaha");
+
+                if(!incorrectInputs.includes(selectedChampionName)){
+                    setIncorrectInputs([selectedChampionName, ...incorrectInputs]);
+                }
+                championNameInputRef.current.value = "";
                 return;
+            }
+            else{
+                setIncorrectInputs([]);
             }
             
             if(user.jwt !== "")
@@ -94,10 +101,10 @@ const ChampionNameInput = ({id, type, setNext, next}) => {
             setMessage(null);
             setNext(!next);
 
+            championNameInputRef.current.value = "";
+
             return;
         }
-
-        setChampionNameSuggestions(JSON.parse(JSON.stringify(championNameSuggestions)));
     }
 
     return(
@@ -108,7 +115,12 @@ const ChampionNameInput = ({id, type, setNext, next}) => {
                     return <ol id={championName.championName} className={championName.isSelected ? "champion-list-item champion-name-highlight" : "champion-list-item"} key={championName.championName}>{championName.championName}</ol>;
                 })}
             </ul>
-            {message == null ? <></> : <p className="redbox">{message}</p>}
+                <ul className="incorrect-input-list">
+                    {incorrectInputs.map((input, index) => (
+                        <li className="incorrect-item" key={index}>{input}</li>
+                    ))}
+                </ul>
+            
         </div>
     )
 }
@@ -117,40 +129,12 @@ const validateAnswer2 = async (jwt, body, setMessage) => {
     try
     {
         //Update to /api/game/answer later will work the same
-        let response = await fetch(config.serverUrl + "/api/Game/answer/guest", {
+        let response = await fetch(config.serverUrl + "/api/Game/answer", {
             method: "post",
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                 Authorization: "Bearer " + jwt
-            },
-            body: JSON.stringify(body)
-        });
-
-        if(response.ok !== true)
-        {
-            setMessage("Ooops something went wrong please try again later...");
-            return;
-        }
-
-        return response.json().then((responseJson)=>{return responseJson});
-    }
-    catch(e)
-    {
-        setMessage("Ooops something went wrong please try again later...");
-        return;
-    }
-}
-
-const validateAnswer = async (body, setMessage) => {
-    try
-    {
-        //Update to /api/game/answer later will work the same
-        let response = await fetch(config.serverUrl + "/api/Game/answer/guest", {
-            method: "post",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                 Authorization: jwt === "" ? "" : "Bearer " + jwt
             },
             body: JSON.stringify(body)
         });

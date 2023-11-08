@@ -3,7 +3,6 @@ import ChampionNameInput from '../../partials/championNameInput/ChampionNameInpu
 import './Ability.css';
 import '../../globals/Global.css';
 
-
 const Ability = () => {
 
   const [question, setQuestion] = useState({});

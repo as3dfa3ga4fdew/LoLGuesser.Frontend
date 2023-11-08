@@ -7,6 +7,8 @@
     width: 200px;
     position: absolute;
     margin-top: 40px;
+    z-index: 1;
+    background-color: rgb(0, 90, 130);
 }
 
 .champion-list-container{
@@ -14,12 +16,12 @@
     flex-direction: column;
     align-items: left;
     justify-content: left;
-    width: 190px;
+    width: 200px;
     margin-top: 20px;
 }
 
 .champion-name-input{
-    width: 185px;
+    width: 192px;
     height: 25px;
     font-size: larger;
     font-family: 'Times New Roman', Times, serif;
@@ -58,12 +60,21 @@
     background: lightgrey;
 }
 
-.test{
+.incorrect-input-list{
+    position: absolute;
+    width: 195px;
+    max-height: 150px;
     overflow-y: auto;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    z-index: 0;
+    margin-top: 50px;
+    border: solid 3px var(--window-border-color);
+    background: rgb(10, 50, 60);
 }
 
-.redbox{
-    background-color: red;
-    width: 100%;
-    height: 50px;
+.incorrect-item{
+    color: var(--gold-text-color);
 }
