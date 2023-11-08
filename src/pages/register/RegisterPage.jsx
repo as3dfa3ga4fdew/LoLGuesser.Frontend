@@ -1,12 +1,9 @@
 import "./RegisterPage.css";
 import "../../globals/Global.css";
-import AccountButton from "../../partials/buttons/AccountButton";
-import InputBox from "../../partials/inputs/InputBox";
 import { useRef, useState, useContext } from "react";
 import { IsValidUsername, isValidPassword } from "../../helpers/ValidateInput";
 import { UserContext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
 import config from "../../config.json";
 
 const RegisterPage = () => {
@@ -60,12 +57,9 @@ const RegisterPage = () => {
 
             setErrorMessage("success");
 
-            const token = result.jwt;
-            const decoded = jwtDecode(token);
-
             let userBuilder = {
                 jwt: result.jwt,
-                username: decoded.username,
+                username: result.username,
                 score: result.score,
                 rememberMe: rememberMe
             };
