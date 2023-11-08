@@ -26,7 +26,7 @@ it('contains a title', () => {
             <HomePage />
         </MemoryRouter>
     );
-    expect(getByText('Choose blyad')).toBeInTheDocument();
+    expect(getByText('Ability')).toBeInTheDocument();
 });
 
 it('contains all nav-links', () => {

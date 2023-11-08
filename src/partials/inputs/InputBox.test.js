@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import InputBox from '../inputs/InputBox'; // assuming your component is in the same directory
+import InputBox from '../inputs/InputBox';
 
 describe('InputBox Component', () => {
     // Positive Test: It should correctly render label and input elements with classNames

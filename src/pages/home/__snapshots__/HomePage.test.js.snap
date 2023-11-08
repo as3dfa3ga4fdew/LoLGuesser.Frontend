@@ -9,40 +9,61 @@ exports[`Matches previous snapshot 1`] = `
       class="home-window"
     >
       <div
-        class="home-title"
+        class="home-items-wrapper"
       >
-        Choose blyad
-      </div>
-      <div
-        class="home-items"
-      >
-        <a
-          class="home-item"
-          href="/ability"
+        <div
+          class="home-titles"
         >
-          <img
-            alt="ability"
-            src="ability.png"
-          />
-        </a>
-        <a
-          class="home-item"
-          href="/lore"
+          <div
+            class="home-title"
+          >
+            Ability
+          </div>
+          <div
+            class="home-title"
+          >
+            Lore
+          </div>
+          <div
+            class="home-title"
+          >
+            Splash Art
+          </div>
+        </div>
+        <div
+          class="home-items"
         >
-          <img
-            alt="lore"
-            src="lore.png"
-          />
-        </a>
-        <a
-          class="home-item"
-          href="/splash"
-        >
-          <img
-            alt="splash"
-            src="splash.png"
-          />
-        </a>
+          <a
+            class="home-item"
+            href="/ability"
+          >
+            <img
+              alt="ability"
+              class="lore-image"
+              src="ability.png"
+            />
+          </a>
+          <a
+            class="home-item"
+            href="/lore"
+          >
+            <img
+              alt="lore"
+              class="lore-image"
+              src="lore.png"
+            />
+          </a>
+          <a
+            class="home-item"
+            href="/splash"
+          >
+            <img
+              alt="splash"
+              class="lore-image"
+              src="splash.png"
+            />
+          </a>
+        </div>
       </div>
     </div>
   </div>
