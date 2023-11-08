@@ -20,6 +20,15 @@ it('Matches previous snapshot', () => {
     expect(asFragment()).toMatchSnapshot();
 });
 
+it('contains ability option', () => {
+    const {getByText} = render(
+        <MemoryRouter>
+            <HomePage />
+        </MemoryRouter>
+    );
+    expect(getByText('Ability')).toBeInTheDocument();
+});
+
 it('contains all nav-links', () => {
     const {getAllByRole} = render(
         <MemoryRouter>
