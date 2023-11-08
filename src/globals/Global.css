@@ -1,0 +1,7 @@
+:root{
+  --container-color: linear-gradient(to right, rgb(0, 90, 130),  rgb(10, 50, 60));
+  --window-color: linear-gradient(to right, rgb(10, 50, 60), rgb(9, 20, 40));
+  --gold-text-color: rgb(200, 170, 110);
+  --gold-title-color: rgb(200, 155, 60);
+  --window-border-color: rgb(200, 170, 110);
+}

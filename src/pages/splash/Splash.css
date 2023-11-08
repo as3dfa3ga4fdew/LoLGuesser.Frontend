@@ -1,0 +1,45 @@
+.splash-container{
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: var(--container-color);
+}
+
+.splash-window{
+    width: 600px;
+    height: 350px;
+    border: solid 3px var(--window-border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--window-color);
+}
+
+.splash-answer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.splash-title{
+    font-size: 18px;
+    color: var(--gold-title-color);
+}
+
+.splash-img-container{
+    border: solid 2px;
+    width: 250px;
+    height: 250px;
+    border: solid 2px var(--window-border-color);
+}
+
+.splash-img{
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 1215px 717px;
+}

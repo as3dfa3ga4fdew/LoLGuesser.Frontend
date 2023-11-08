@@ -1,0 +1,60 @@
+.nav-header{
+    width: 100%;
+    height: 80px;
+    background-color: rgb(10, 20, 40);
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    position: fixed;
+}
+
+.header-item{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-text-color);
+    font-size: large;
+    font-family: Arial, sans-serif;
+}
+
+.header-logo{
+    height: 60px;
+    width: 60px;
+}
+
+.header-account-items{
+    display: flex;
+    margin-left: 40px;
+}
+
+#header-item-right{
+    margin-left: 40px;
+}
+
+.logout-button{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold-text-color);
+    background: none;
+    border: none;
+    text-decoration: underline;
+    font-size: large;
+    font-weight: lighter;
+    font-family: Arial, sans-serif;
+    padding-right: 30px;
+  }
+  
+  .logout-button:hover{
+    cursor: pointer;
+  }
+
+  .user-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    color: var(--gold-text-color);
+  }

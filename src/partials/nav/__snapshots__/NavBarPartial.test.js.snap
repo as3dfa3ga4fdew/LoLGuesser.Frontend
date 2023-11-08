@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBarPartial NavBarPartial snapshot test 1`] = `
+<DocumentFragment>
+  <nav
+    class="nav-header"
+  >
+    <a
+      aria-current="page"
+      class="active"
+      href="/"
+    >
+      <img
+        alt="company logo"
+        class="header-logo"
+        src="logo.png"
+      />
+    </a>
+    <div
+      class="header-account-items"
+    >
+      <a
+        class="header-item"
+        href="/login"
+      >
+        Login
+      </a>
+      <a
+        class="header-item"
+        href="/register"
+        id="header-item-right"
+      >
+        Register
+      </a>
+    </div>
+  </nav>
+</DocumentFragment>
+`;
