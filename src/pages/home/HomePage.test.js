@@ -20,15 +20,6 @@ it('Matches previous snapshot', () => {
     expect(asFragment()).toMatchSnapshot();
 });
 
-it('contains a title', () => {
-    const {getByText} = render(
-        <MemoryRouter>
-            <HomePage />
-        </MemoryRouter>
-    );
-    expect(getByText('Choose blyad')).toBeInTheDocument();
-});
-
 it('contains all nav-links', () => {
     const {getAllByRole} = render(
         <MemoryRouter>

@@ -1,5 +1,3 @@
-import AccountButton from "../../partials/buttons/AccountButton";
-import InputBox from "../../partials/inputs/InputBox";
 import "./LoginPage.css";
 import "../../globals/Global.css";
 import { useRef, useState, useContext } from "react";
@@ -44,8 +42,6 @@ const LoginPage = () => {
             result = await response.json();
 
             setErrorMessage("success");
-
-            const token = result.jwt;
 
             let userBuilder = {
                 jwt: result.jwt,
