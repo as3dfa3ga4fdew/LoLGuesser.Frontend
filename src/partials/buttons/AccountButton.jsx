@@ -1,11 +1,11 @@
 import './AccountButton.css';
 
-const AccountButton = ({text}) => {
-
-  return(
-    <button className="account-button">{text}</button>
-  )
-
-}
+const AccountButton = ({ text, onClick }) => {
+  return (
+    <button className="account-button" onClick={onClick}>
+      {text}
+    </button>
+  );
+};
 
 export default AccountButton;
