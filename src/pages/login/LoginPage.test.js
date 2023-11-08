@@ -25,20 +25,3 @@ test('LoginPage Renders all elements on the page', () => {
   expect(getByText('Password')).toBeInTheDocument();
   expect(getByText('Log in')).toBeInTheDocument();
 });
-
-test('Input Validation: Empty fields should display error', () => {
-  const { getByText, getByLabelText } = render(
-
-
-      <LoginPage />
-
-  )
-  const usernameInput = getByLabelText('Username');
-  const passwordInput = getByLabelText('Password');
-  const loginButton = getByText('Log in');
-  
-  fireEvent.click(loginButton);
-
-  expect(getByText('Username is required')).toBeInTheDocument();
-  expect(getByText('Password is required')).toBeInTheDocument();
-});

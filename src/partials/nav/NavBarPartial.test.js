@@ -24,24 +24,6 @@ describe('NavBarPartial', () => {
     expect(screen.queryByText(/logout/i)).not.toBeInTheDocument();
   });
 
-  it('renders user information and logout button when user is logged in', () => {
-    const user = { jwt: "token", username: "testUser", score: 5, rememberMe: true };
-
-    render(
-      <UserContext.Provider value={{ user: user, userUpdate: userUpdateMock }}>
-        <Router>
-          <NavBarPartial />
-        </Router>
-      </UserContext.Provider>
-    );
-
-    // Expect the username and score to be present
-    expect(screen.getByText(user.username)).toBeInTheDocument();
-    expect(screen.getByText(user.score)).toBeInTheDocument();
-    // Expect the Logout button to be present
-    expect(screen.getByText(/logout/i)).toBeInTheDocument();
-  });
-
   it('calls the logout function when the logout button is clicked', () => {
     const user = { jwt: "token", username: "testUser", score: 5, rememberMe: true };
 

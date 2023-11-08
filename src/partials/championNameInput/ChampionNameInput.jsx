@@ -110,7 +110,7 @@ const ChampionNameInput = ({id, type, setNext, next}) => {
     return(
         <div className="champion-list-container" onKeyDown={onKeyPress}>
             <input type="text" ref={championNameInputRef} onChange={inputOnChange} className="champion-name-input"/>
-            <ul className="champion-list">
+            <ul className="champion-list" data-testid="champion-list">
                 {championNameSuggestions.map((championName) => {
                     return <ol id={championName.championName} className={championName.isSelected ? "champion-list-item champion-name-highlight" : "champion-list-item"} key={championName.championName}>{championName.championName}</ol>;
                 })}
