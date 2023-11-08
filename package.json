@@ -37,5 +37,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },"jest": {
+    "coverageReporters": ["json", "lcov", "text", "clover"],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
+    "coveragePathIgnorePatterns": [ "/node_modules/", "/path/to/ignore/" ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}", "!<rootDir>/node_modules/", "!<rootDir>/path/to/exclude/", "!<rootDir>/src/**/UserContext.{js,jsx,ts,tsx}"
+    ]
   }
 }
