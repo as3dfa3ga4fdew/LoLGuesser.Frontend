@@ -8,11 +8,12 @@ const Splash = () => {
   
   const [question, setQuestion] = useState({});
   const [randomCoordinates, setRandomCoordinates] = useState({ randomX: 0, randomY: 0 });
+  const [next, setNext] = useState(false);
 
   useEffect(() => {
     SetQuestionAsync(setQuestion);
     setRandomCoordinates(getRandomCoordinates(1215, 717, 250, 250));
-  }, [])
+  }, [next])
   
   return(
     <div className='splash-container'>
@@ -29,7 +30,7 @@ const Splash = () => {
         </div>
       </div>
       <div className='splash-answer'>
-        <ChampionNameInput id={question.id} type={question.type}/>
+        <ChampionNameInput id={question.id} type={question.type} setNext={setNext} next={next} />
       </div>
     </div>
   );
