@@ -63,7 +63,7 @@
 .incorrect-input-list{
     position: absolute;
     width: 195px;
-    max-height: 150px;
+    max-height: 131px;
     overflow-y: auto;
     list-style-type: none;
     display: flex;
